@@ -3,7 +3,6 @@
 library(tidyverse)
 library(tidytuesdayR)
 
-
 freed_slaves <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-16/freed_slaves.csv')
 
 freed_slaves<-mutate(freed_slaves, Free= paste(freed_slaves$Free, "%", sep=""))
@@ -36,5 +35,5 @@ g<-ggplot(freed_slaves, aes(Year, Slave))+
 g
 
 
-ggsave("gweek8.png", width=7, height=10)
+ggsave(here::here("week8","gweek8.png"), width=7, height=10)
 
