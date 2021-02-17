@@ -1,5 +1,5 @@
 
-  
+
 library(tidyverse)
 library(tidytuesdayR)
 
@@ -11,7 +11,8 @@ freed_slaves<-mutate(freed_slaves, Free= paste(freed_slaves$Free, "%", sep=""))
 g<-ggplot(freed_slaves, aes(Year, Slave))+
   geom_area(fill="black")+
   labs(title = ("PROPORTION OF FREEMAN AND SLAVES AMONG AMERICAN NEGROES . \n\n\n PROPORTION  DES  NÈGRES  LIBRES ET DES ESCLAVES EN AMÉRIQUE ."),
-       subtitle = ("DONE BY ATLANTA UNIVERSITY ."))+
+       subtitle = ("DONE BY ATLANTA UNIVERSITY ."),
+       caption="Data source: W.E.B. Du Bois | Visualization: Rodrigo Santos")+
   geom_text(data=(subset(freed_slaves,freed_slaves$Year!=1870)) ,aes(y = Slave, label = Free, size = 12), vjust= -0.2, hjust=0.48, fontface="bold")+
   annotate("text", x = 1870, y = 91, label = "100%", size=4.3, fontface="bold", hjust=0.35)+
   coord_cartesian(clip = "off")+
@@ -31,9 +32,9 @@ g<-ggplot(freed_slaves, aes(Year, Slave))+
   scale_y_continuous(limits=c(0, 120), expand = c(0, 0))+
   annotate("text", x = 1830, y = 112, label = "FREE  -  LIBRE", size=6, fontface="bold")+
   annotate("text", x = 1830, y = 50, label = "SLAVES \nESCLAVES", colour="#b2a9a1", size=7, fontface="bold")
+  
 
 g
-
+ 
 
 ggsave(here::here("week8","gweek8.png"), width=7, height=10)
-
